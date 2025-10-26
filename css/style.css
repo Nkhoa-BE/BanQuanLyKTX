@@ -1,0 +1,297 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f8ff;
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #e3eafc;
+  width: 220px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sidebar h2 {
+  color: #0055ff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.menu a {
+  display: block;
+  color: #333;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-size: 15px;
+  border-left: 5px solid transparent;
+}
+.menu a:hover, .menu a.active {
+  background-color: #0055ff;
+  color: white;
+  border-left: 5px solid #003bb3;
+}
+.logout {
+  text-align: center;
+  padding: 10px;
+}
+.logout a {
+  color: #0055ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+}
+h1 {
+  color: #003bb3;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  align-items: center;
+}
+.search-bar input, .search-bar select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.search-bar input {
+  flex: 1;
+}
+.search-bar button {
+  padding: 10px 20px;
+  background: #0055ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.search-bar button:hover {
+  background: #003bb3;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+th {
+  background-color: #e8f0ff;
+  color: #003bb3;
+}
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.status.trong { background-color: #d3f9d8; color: #2e7d32; }
+.status.dango { background-color: #ffe1d2; color: #c96b31; }
+.status.giu { background-color: #f0eef2; color: #555; }
+.action button {
+  background: #e3eafc;
+  color: #003bb3;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.action button:hover {
+  background: #c7d5fc;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.modal-content h3 {
+  color: #003bb3;
+  margin-bottom: 15px;
+}
+.modal-content select {
+  width: 80%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.save-btn {
+  background: #0055ff;
+  color: white;
+}
+.cancel-btn {
+  background: #ccc;
+  margin-left: 10px;
+}
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0055ff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.toast.show {
+  opacity: 1;
+}
+.page { display: none; }
+.page.active { display: block; }
+/* ----- Khu vực chọn loại báo cáo ----- */
+#reports h3 {
+  color: #003bb3;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#reports select {
+  padding: 10px 15px;
+  border: 1px solid #c7d5fc;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #f8fbff;
+  color: #003366;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+#reports select:hover,
+#reports select:focus {
+  border-color: #0055ff;
+  box-shadow: 0 0 5px rgba(0, 85, 255, 0.3);
+}
+
+#reports button {
+  padding: 10px 20px;
+  background: #0055ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.1s ease;
+  margin-left: 8px;
+}
+
+#reports button:hover {
+  background: #003bb3;
+  transform: scale(1.03);
+}
+
+#reportResult {
+  margin-top: 25px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+/* ----- Popup Cập nhật trạng thái phòng ----- */
+.modal-content {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h3 {
+  color: #0048ff;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.modal-content p {
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.modal-content select {
+  width: 80%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #c7d5fc;
+  font-size: 15px;
+  background-color: #f8fbff;
+  color: #003366;
+  transition: all 0.2s ease;
+}
+
+.modal-content select:hover,
+.modal-content select:focus {
+  border-color: #0055ff;
+  box-shadow: 0 0 6px rgba(0, 85, 255, 0.25);
+}
+
+.modal-content button {
+  margin-top: 18px;
+  padding: 8px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.save-btn {
+  background: #0055ff;
+  color: white;
+  margin-right: 8px;
+}
+
+.save-btn:hover {
+  background: #003bb3;
+  transform: scale(1.05);
+}
+
+.cancel-btn {
+  background: #ccc;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background: #b8b8b8;
+}
+
+@keyframes fadeIn {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

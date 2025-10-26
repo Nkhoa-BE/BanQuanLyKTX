@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ Thống Quản Lý KTX</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <h2>KTX Manager</h2>
+      <div class="menu">
+        <a href="#" class="active" onclick="showPage('rooms')">🏠 Quản lý phòng</a>
+        <a href="#" onclick="showPage('reports')">📊 Báo cáo</a>
+      </div>
+    </div>
+    <div class="logout"><a href="#">↩ Đăng xuất</a></div>
+  </div>
+
+  <div class="content">
+    <!-- Trang Quản lý phòng -->
+    <div id="rooms" class="page active">
+      <h1>Trang quản lý ký túc xá – Ban quản lý</h1>
+      <h3>Quản lý phòng</h3>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Nhập mã phòng, tầng hoặc khu ký túc xá...">
+        <select id="statusFilter">
+          <option value="">Tất cả trạng thái</option>
+          <option value="Đang ở">Đang ở</option>
+          <option value="Trống">Trống</option>
+          <option value="Giữ chỗ">Giữ chỗ</option>
+        </select>
+        <button onclick="filterRooms()">Tìm kiếm</button>
+      </div>
+
+      <table id="roomTable">
+        <thead>
+          <tr>
+            <th>Mã phòng</th>
+            <th>Tầng</th>
+            <th>Trạng thái</th>
+            <th>Số sinh viên hiện tại</th>
+            <th>Giới hạn tối đa</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>A101</td><td>Tầng 1</td><td><span class="status dango">Đang ở</span></td><td>4</td><td>4</td><td class="action"><button onclick="openModal(this)">Cập nhật</button></td></tr>
+          <tr><td>A102</td><td>Tầng 1</td><td><span class="status trong">Trống</span></td><td>0</td><td>4</td><td class="action"><button onclick="openModal(this)">Cập nhật</button></td></tr>
+          <tr><td>A201</td><td>Tầng 2</td><td><span class="status giu">Giữ chỗ</span></td><td>2</td><td>4</td><td class="action"><button onclick="openModal(this)">Cập nhật</button></td></tr>
+          <tr><td>B101</td><td>Tầng 1</td><td><span class="status trong">Trống</span></td><td>0</td><td>4</td><td class="action"><button onclick="openModal(this)">Cập nhật</button></td></tr>
+          <tr><td>B202</td><td>Tầng 2</td><td><span class="status dango">Đang ở</span></td><td>3</td><td>4</td><td class="action"><button onclick="openModal(this)">Cập nhật</button></td></tr>
+          <tr><td>C303</td><td>Tầng 3</td><td><span class="status giu">Giữ chỗ</span></td><td>1</td><td>4</td><td class="action"><button onclick="openModal(this)">Cập nhật</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Trang Báo cáo -->
+    <div id="reports" class="page">
+      <h1>Thống kê & Báo cáo</h1>
+      <h3>Chọn loại báo cáo cần xem</h3>
+
+      <select id="reportType">
+        <option value="">-- Chọn loại báo cáo --</option>
+        <option value="phong">Báo cáo phòng ở</option>
+        <option value="taichinh">Báo cáo tài chính</option>
+        <option value="dangky">Báo cáo đăng ký</option>
+      </select>
+      <button onclick="generateReport()">Xem báo cáo</button>
+
+      <div id="reportResult"></div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="statusModal" class="modal">
+    <div class="modal-content">
+      <h3>Cập nhật trạng thái phòng</h3>
+      <p id="roomName"></p>
+      <select id="newStatus">
+        <option value="Đang ở">Đang ở</option>
+        <option value="Trống">Trống</option>
+        <option value="Giữ chỗ">Giữ chỗ</option>
+      </select>
+      <div>
+        <button class="save-btn" onclick="saveStatus()">Lưu</button>
+        <button class="cancel-btn" onclick="closeModal()">Hủy</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Cập nhật trạng thái thành công!</div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
